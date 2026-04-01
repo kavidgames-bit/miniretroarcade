@@ -78,22 +78,6 @@ const PRODUCTS = [
         "price": 15000
       }
     ]
-  },
-  {
-    "id": "new-1775072607972",
-    "name": "Nuevo Producto",
-    "description": "aa",
-    "image": "assets/images/arcade_classic.png",
-    "basePrice": 2,
-    "badge": "",
-    "category": "otros",
-    "addons": [
-      {
-        "id": "new-1775072616563",
-        "name": "aa",
-        "price": 1
-      }
-    ]
   }
 ];
 
