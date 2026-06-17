@@ -4,7 +4,7 @@ const PRODUCTS = [
   {
     "id": "consola-arcade-1p",
     "name": "Joystick Arcade USB para PC",
-    "description": "- Compatible con PC (USB Plug & Play).\n- Palanca tipo Sanwa.\n- Botones arcade de alta respuesta.\n- Gráfica personalizada con plotter laminado.\n- Ideal para emuladores y juegos de pelea.\n- No incluye juegos.",
+    "description": "Compatible con PC (USB Plug & Play). Palanca tipo Sanwa. Botones arcade de alta respuesta. Gráfica personalizada con plotter laminado. Ideal para emuladores y juegos de pelea. No incluye juegos.",
     "images": [
       "assets/images/prod_1781703009230.jpeg",
       "assets/images/prod_1781703012046.jpeg"
@@ -33,7 +33,7 @@ const PRODUCTS = [
   {
     "id": "consola-arcade-2p",
     "name": "Mando Arcade 1 Player",
-    "description": "- Más de 11.000 juegos incluidos.\n- Memoria de 32GB.\n- Palancas disponibles tipo Sanwa.\n- Botones arcade de alta respuesta.\n- Gráfica personalizada con plotter laminado.\n- Sistema listo para conectar y jugar.\n- Compatible con TV y monitor mediante HDMI.",
+    "description": "Más de 11.000 juegos incluidos. Memoria de 32GB. Palancas disponibles tipo Sanwa. Botones arcade de alta respuesta. Gráfica personalizada con plotter laminado. Sistema listo para conectar y jugar.\nCompatible con TV y monitor mediante HDMI.",
     "images": [
       "assets/images/retro_console.png"
     ],
