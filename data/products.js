@@ -31,10 +31,11 @@ const PRODUCTS = [
   },
   {
     "id": "consola-arcade-2p",
-    "name": "Consola Arcade 2 Jugadores",
+    "name": "Consola Arcade 2 Jugadores vgv",
     "description": "La experiencia arcade completa para compartir. Dos palancas, botones de acción y conexión plug & play para cualquier pantalla.",
     "images": [
-      "assets/images/retro_console.png"
+      "assets/images/prod_1781702374973.jpeg",
+      "assets/images/arcade_classic.png"
     ],
     "basePrice": 185000,
     "badge": "POPULAR",
