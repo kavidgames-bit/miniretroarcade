@@ -7,7 +7,10 @@ const PRODUCTS = [
     "description": "Compatible con PC/RaspBerry (USB Plug & Play). Palanca tipo Sanwa con placa zero delay. Botones arcade de alta respuesta. Gráfica personalizada con plotter laminado. Ideal para emuladores y juegos de pelea. No incluye juegos.",
     "images": [
       "assets/images/prod_1781703009230.jpeg",
-      "assets/images/prod_1781703012046.jpeg"
+      "assets/images/prod_1781703012046.jpeg",
+      "assets/images/prod_1781740027563.jpeg",
+      "assets/images/prod_1781740034482.jpeg",
+      "assets/images/prod_1781740019699.jpeg"
     ],
     "basePrice": 190000,
     "badge": "MÁS VENDIDO",
