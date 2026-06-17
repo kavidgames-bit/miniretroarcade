@@ -4,7 +4,7 @@ const PRODUCTS = [
   {
     "id": "consola-arcade-1p",
     "name": "Joystick Arcade USB para PC",
-    "description": "Consola arcade premium para un jugador. Conexión HDMI directa a tu TV. Componentes de alta resistencia y miles de juegos clásicos.",
+    "description": "- Compatible con PC (USB Plug & Play).\n- Palanca tipo Sanwa.\n- Botones arcade de alta respuesta.\n- Gráfica personalizada con plotter laminado.\n- Ideal para emuladores y juegos de pelea.\n- No incluye juegos.",
     "images": [
       "assets/images/prod_1781703009230.jpeg",
       "assets/images/prod_1781703012046.jpeg"
@@ -32,8 +32,8 @@ const PRODUCTS = [
   },
   {
     "id": "consola-arcade-2p",
-    "name": "Consola Arcade 2 Jugadores",
-    "description": "La experiencia arcade completa para compartir. Dos palancas, botones de acción y conexión plug & play para cualquier pantalla.",
+    "name": "Mando Arcade 1 Player",
+    "description": "- Más de 11.000 juegos incluidos.\n- Memoria de 32GB.\n- Palancas disponibles tipo Sanwa.\n- Botones arcade de alta respuesta.\n- Gráfica personalizada con plotter laminado.\n- Sistema listo para conectar y jugar.\n- Compatible con TV y monitor mediante HDMI.",
     "images": [
       "assets/images/retro_console.png"
     ],
@@ -60,8 +60,8 @@ const PRODUCTS = [
   },
   {
     "id": "arcade-clasico",
-    "name": "Máquina Arcade Clásica",
-    "description": "El mueble arcade vertical que siempre soñaste. Tamaño real, monitor integrado y sonido estéreo.",
+    "name": "Mando Arcade 2 Players – 60 cm",
+    "description": "- Más de 11.000 juegos incluidos.\n- Memoria de 32GB.\n- Palancas tipo Sanwa o semiprofesionales.\n- Gráfica en plotter laminado.\n- Tapacanto en todos sus laterales.\n- Patitas antideslizantes.\n- Compatible con TV y monitor mediante HDMI.\n- Listo para conectar y jugar.",
     "images": [
       "assets/images/arcade_classic.png"
     ],
