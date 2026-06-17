@@ -85,6 +85,42 @@ const PRODUCTS = [
         "price": 15000
       }
     ]
+  },
+  {
+    "id": "new-1781738022710",
+    "name": "Nuevo Producto",
+    "description": "Descripción del producto...",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781738026233",
+    "name": "Nuevo Producto",
+    "description": "Descripción del producto...",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781738027367",
+    "name": "Nuevo Producto",
+    "description": "Descripción del producto...",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
   }
 ];
 
