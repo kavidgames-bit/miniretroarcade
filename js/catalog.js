@@ -26,7 +26,7 @@ function renderCatalog() {
     <article class="product-card" onclick="openConfigurator('${p.id}')">
       ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
       <div class="product-img-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <img src="${(p.images && p.images[0]) || p.image || ''}" alt="${p.name}" loading="lazy">
       </div>
       <div class="product-info">
         <h3 class="product-name">${p.name}</h3>
@@ -50,7 +50,7 @@ window.openConfigurator = function(productId) {
 
   const overlay = document.getElementById('config-modal');
   document.getElementById('modal-title').textContent = currentProduct.name;
-  document.getElementById('modal-img').src     = currentProduct.image;
+  document.getElementById('modal-img').src = (currentProduct.images && currentProduct.images[0]) || currentProduct.image || '';
   document.getElementById('modal-img').alt     = currentProduct.name;
   document.getElementById('modal-base').innerHTML =
     `Precio base: <strong>${fmt(currentProduct.basePrice)}</strong>`;
