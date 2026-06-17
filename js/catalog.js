@@ -22,23 +22,11 @@ function renderCatalog() {
   const grid = document.getElementById('catalog-grid');
   if (!grid) return;
 
-  grid.innerHTML = PRODUCTS.map(p => {
-    const imgs = p.images && p.images.length ? p.images : [p.image || ''];
-    const hasMany = imgs.length > 1;
-    return `
+  grid.innerHTML = PRODUCTS.map(p => `
     <article class="product-card" onclick="openConfigurator('${p.id}')">
       ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
-      <div class="product-img-wrap" style="position:relative; overflow:hidden;">
-        <div class="card-gallery" id="gallery-${p.id}" style="display:flex; transition:transform .35s ease; width:${imgs.length * 100}%;">
-          ${imgs.map(src => `<img src="${src}" alt="${p.name}" loading="lazy" style="width:${100/imgs.length}%; flex-shrink:0; object-fit:cover;">`).join('')}
-        </div>
-        ${hasMany ? `
-          <button class="gallery-arrow" onclick="event.stopPropagation(); slideCard('${p.id}', -1, ${imgs.length})" style="position:absolute;left:6px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:50%;width:28px;height:28px;font-size:14px;cursor:pointer;z-index:5;">‹</button>
-          <button class="gallery-arrow" onclick="event.stopPropagation(); slideCard('${p.id}', 1, ${imgs.length})" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.6);border:none;color:#fff;border-radius:50%;width:28px;height:28px;font-size:14px;cursor:pointer;z-index:5;">›</button>
-          <div style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:5;" id="dots-${p.id}">
-            ${imgs.map((_, i) => `<span onclick="event.stopPropagation(); goToCard('${p.id}', ${i}, ${imgs.length})" style="width:7px;height:7px;border-radius:50%;background:${i===0?'#fff':'rgba(255,255,255,.4)'};cursor:pointer;transition:background .2s;" data-dot="${i}"></span>`).join('')}
-          </div>
-        ` : ''}
+      <div class="product-img-wrap">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
       </div>
       <div class="product-info">
         <h3 class="product-name">${p.name}</h3>
@@ -51,8 +39,7 @@ function renderCatalog() {
         <button class="btn-configure">🎮 Configurar máquina</button>
       </div>
     </article>
-  `;
-  }).join('');
+  `).join('');
 }
 
 // ─── CONFIGURADOR MODAL ─────────────────────────────────────
@@ -63,27 +50,8 @@ window.openConfigurator = function(productId) {
 
   const overlay = document.getElementById('config-modal');
   document.getElementById('modal-title').textContent = currentProduct.name;
-
-  const imgs = currentProduct.images && currentProduct.images.length ? currentProduct.images : [currentProduct.image || ''];
-  const modalImg = document.getElementById('modal-img');
-  modalImg.src = imgs[0];
-  modalImg.alt = currentProduct.name;
-
-  // Thumbnails bajo la imagen principal
-  const thumbsEl = document.getElementById('modal-thumbs');
-  if (thumbsEl) {
-    if (imgs.length > 1) {
-      thumbsEl.style.display = 'flex';
-      thumbsEl.innerHTML = imgs.map((src, i) => `
-        <img src="${src}" onclick="modalSelectImg(this, '${src}')"
-          style="width:56px;height:56px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid ${i===0?'var(--orange)':'var(--border)'};opacity:${i===0?1:0.6};transition:all .2s;">
-      `).join('');
-    } else {
-      thumbsEl.style.display = 'none';
-      thumbsEl.innerHTML = '';
-    }
-  }
-
+  document.getElementById('modal-img').src     = currentProduct.image;
+  document.getElementById('modal-img').alt     = currentProduct.name;
   document.getElementById('modal-base').innerHTML =
     `Precio base: <strong>${fmt(currentProduct.basePrice)}</strong>`;
 
@@ -248,36 +216,6 @@ document.getElementById('btn-send-order')?.addEventListener('click', () => {
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
 });
-
-// ─── GALERÍA DE CARDS ────────────────────────────────────────
-const _cardIdx = {};
-
-window.slideCard = function(id, dir, total) {
-  _cardIdx[id] = ((_cardIdx[id] || 0) + dir + total) % total;
-  goToCard(id, _cardIdx[id], total);
-};
-
-window.goToCard = function(id, idx, total) {
-  _cardIdx[id] = idx;
-  const gallery = document.getElementById('gallery-' + id);
-  if (gallery) gallery.style.transform = `translateX(-${idx * (100 / total)}%)`;
-  const dotsEl = document.getElementById('dots-' + id);
-  if (dotsEl) {
-    dotsEl.querySelectorAll('span').forEach((s, i) => {
-      s.style.background = i === idx ? '#fff' : 'rgba(255,255,255,.4)';
-    });
-  }
-};
-
-// ─── GALERÍA DEL MODAL ───────────────────────────────────────
-window.modalSelectImg = function(el, src) {
-  document.getElementById('modal-img').src = src;
-  const thumbs = el.parentElement.querySelectorAll('img');
-  thumbs.forEach(t => {
-    t.style.borderColor = t === el ? 'var(--orange)' : 'var(--border)';
-    t.style.opacity     = t === el ? '1' : '0.6';
-  });
-};
 
 // ─── INIT ────────────────────────────────────────────────────
 renderCatalog();

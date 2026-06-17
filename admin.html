@@ -19,6 +19,10 @@
     .save-fixed { position: fixed; bottom: 30px; right: 30px; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     textarea { width: 100%; height: 80px; margin-top: 10px; }
     .add-btn { background: var(--bg-2); border: 1px dashed var(--orange); color: var(--orange); width: 100%; padding: 15px; margin-top: 10px; }
+    .thumb-wrap { position:relative; width:120px; }
+    .thumb-wrap img { width:120px; height:100px; object-fit:cover; border-radius:8px; border:2px solid var(--border); display:block; }
+    .thumb-btn-edit { position:absolute; bottom:4px; left:4px; background:rgba(0,0,0,.75); border:none; color:#fff; border-radius:5px; padding:2px 7px; font-size:0.65rem; cursor:pointer; }
+    .thumb-btn-del  { position:absolute; top:4px; right:4px; background:var(--red); border:none; color:#fff; border-radius:50%; width:20px; height:20px; font-size:0.7rem; cursor:pointer; line-height:20px; text-align:center; }
   </style>
 </head>
 <body>
@@ -43,7 +47,7 @@
       </div>
     </div>
 
-    <!-- CONFIGURACIÓN GITHUB (OCULTA) -->
+    <!-- CONFIGURACIÓN GITHUB -->
     <div id="github-config" class="admin-card" style="display:none; border-color:var(--yellow); background:rgba(251,191,36,0.05);">
       <h3 style="font-family:var(--font-pixel); font-size:0.6rem; color:var(--yellow); margin-bottom:15px;">CONFIGURACIÓN DE AUTOMATIZACIÓN</h3>
       <div class="input-row">
@@ -63,9 +67,7 @@
       </div>
     </div>
 
-    <div id="products-editor">
-      <!-- Se llena via JS -->
-    </div>
+    <div id="products-editor"></div>
 
     <button class="add-btn" onclick="addNewProduct()">+ AGREGAR NUEVO PRODUCTO AL CATÁLOGO</button>
 
@@ -86,25 +88,17 @@
   <script>
     const PASS = "arcade2024";
 
-    function checkPass() {
-      const p = document.getElementById('admin-pass').value;
-      if(p === PASS) {
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('admin-content').style.display = 'block';
-        loadConfig();
-        initEditor();
-      } else { alert("Contraseña incorrecta"); }
-    }
-
+    // ─── ESTADO LOCAL ────────────────────────────────────────────
     let localProducts = [...PRODUCTS].map(p => ({
       ...p,
       images: p.images && p.images.length ? [...p.images] : [p.image || '']
     }));
-    let imagesToUpload = {}; // key: "prodIdx_imgIdx", value: { name, base64, fileType }
+    let imagesToUpload = {}; // key: "prodIdx_imgIdx"
 
+    // ─── AUTH ────────────────────────────────────────────────────
     function checkPass() {
       const p = document.getElementById('admin-pass').value;
-      if(p === PASS) {
+      if (p === PASS) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('admin-content').style.display = 'block';
         loadConfig();
@@ -112,40 +106,43 @@
       } else { alert("Contraseña incorrecta"); }
     }
 
+    // ─── CONFIG GITHUB ───────────────────────────────────────────
     function toggleGithubConfig() {
       const el = document.getElementById('github-config');
       el.style.display = el.style.display === 'none' ? 'block' : 'none';
     }
-
     function saveConfig() {
       localStorage.setItem('gh_owner', document.getElementById('gh-owner').value);
-      localStorage.setItem('gh_repo', document.getElementById('gh-repo').value);
+      localStorage.setItem('gh_repo',  document.getElementById('gh-repo').value);
       localStorage.setItem('gh_token', document.getElementById('gh-token').value);
     }
-
     function loadConfig() {
       document.getElementById('gh-owner').value = localStorage.getItem('gh_owner') || '';
-      document.getElementById('gh-repo').value = localStorage.getItem('gh_repo') || '';
+      document.getElementById('gh-repo').value  = localStorage.getItem('gh_repo')  || '';
       document.getElementById('gh-token').value = localStorage.getItem('gh_token') || '';
     }
 
-    // ─── LÓGICA DE IMÁGENES (MÚLTIPLES) ─────────────────────────
+    // ─── MANEJO DE IMÁGENES ──────────────────────────────────────
+    function triggerFileInput(idx, imgIdx) {
+      document.getElementById('file-' + idx + '-' + imgIdx).click();
+    }
+
     function handleImageSelect(idx, imgIdx, file) {
       if (!file) return;
       if (file.size > 5 * 1024 * 1024) {
-        alert("⚠️ La imagen es demasiado pesada. Por favor, usá una menor a 5MB.");
+        alert("⚠️ La imagen es demasiado pesada. Usá una menor a 5MB.");
         return;
       }
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = function(e) {
         const base64 = e.target.result.split(',')[1];
-        const extension = file.name.split('.').pop();
-        const newFilename = `prod_${Date.now()}.${extension}`;
-        const key = `${idx}_${imgIdx}`;
-        imagesToUpload[key] = { name: newFilename, base64, fileType: file.type };
-        // Actualizar preview y array local
-        localProducts[idx].images[imgIdx] = `assets/images/${newFilename}`;
-        document.getElementById(`preview-${idx}-${imgIdx}`).src = e.target.result;
+        const ext = file.name.split('.').pop();
+        const newFilename = 'prod_' + Date.now() + '.' + ext;
+        const key = idx + '_' + imgIdx;
+        imagesToUpload[key] = { name: newFilename, base64: base64, fileType: file.type };
+        localProducts[idx].images[imgIdx] = 'assets/images/' + newFilename;
+        var preview = document.getElementById('preview-' + idx + '-' + imgIdx);
+        if (preview) preview.src = e.target.result;
       };
       reader.readAsDataURL(file);
     }
@@ -161,83 +158,133 @@
         return;
       }
       localProducts[idx].images.splice(imgIdx, 1);
-      // Limpiar uploads pendientes de esa imagen
-      delete imagesToUpload[`${idx}_${imgIdx}`];
+      delete imagesToUpload[idx + '_' + imgIdx];
       initEditor();
     }
 
+    function renderImageThumbs(idx, images) {
+      return images.map(function(src, imgIdx) {
+        var delBtn = images.length > 1
+          ? '<button class="thumb-btn-del" onclick="removeImageFromProduct(' + idx + ',' + imgIdx + ')" title="Eliminar foto">✕</button>'
+          : '';
+        return '<div class="thumb-wrap">'
+          + '<img id="preview-' + idx + '-' + imgIdx + '" src="' + src + '">'
+          + '<button class="thumb-btn-edit" onclick="triggerFileInput(' + idx + ',' + imgIdx + ')">✏️ cambiar</button>'
+          + delBtn
+          + '<input type="file" id="file-' + idx + '-' + imgIdx + '" style="display:none;" accept="image/*" onchange="handleImageSelect(' + idx + ',' + imgIdx + ',this.files[0])">'
+          + '</div>';
+      }).join('');
+    }
+
+    // ─── GITHUB API ──────────────────────────────────────────────
     async function uploadToGitHub(owner, repo, token, path, content, message) {
-      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+      const apiUrl = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + path;
+
+      // Verificar si el archivo ya existe (para obtener SHA en caso de reemplazar)
+      let sha = null;
+      try {
+        const checkRes = await fetch(apiUrl, {
+          headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (checkRes.ok) {
+          const existing = await checkRes.json();
+          sha = existing.sha;
+        }
+      } catch(e) { /* archivo nuevo, no hay SHA */ }
+
+      const body = { message, content };
+      if (sha) body.sha = sha;
+
       const res = await fetch(apiUrl, {
         method: 'PUT',
-        headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, content })
+        headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
       });
-      if(!res.ok) throw new Error(`No se pudo subir el archivo: ${path}`);
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        const ghMsg = errData.message || res.statusText;
+        throw new Error('GitHub ' + res.status + ' al subir ' + path + ': ' + ghMsg);
+      }
       return await res.json();
     }
 
     async function syncToGitHub() {
-      const owner = document.getElementById('gh-owner').value;
-      const repo  = document.getElementById('gh-repo').value;
-      const token = document.getElementById('gh-token').value;
+      const owner  = document.getElementById('gh-owner').value.trim();
+      const repo   = document.getElementById('gh-repo').value.trim();
+      const token  = document.getElementById('gh-token').value.trim();
       const status = document.getElementById('sync-status');
-      const btn = document.getElementById('btn-sync');
+      const btn    = document.getElementById('btn-sync');
 
-      if(!owner || !repo || !token) {
-        alert("⚠️ Por favor, configura primero los datos de GitHub (clic en el engranaje).");
+      if (!owner || !repo || !token) {
+        alert("⚠️ Por favor, configurá primero los datos de GitHub (clic en el engranaje).");
         toggleGithubConfig();
         return;
       }
 
-      if(!confirm("¿Estás seguro de publicar estos cambios? La web se actualizará automáticamente.")) return;
+      if (!confirm("¿Publicar estos cambios? La web se actualizará automáticamente.")) return;
 
       try {
         status.textContent = "⏳ Iniciando sincronización...";
         status.style.color = "var(--yellow)";
         btn.disabled = true;
 
-        // 1. SUBIR IMÁGENES PRIMERO
+        // 1. Subir imágenes nuevas
         const imageKeys = Object.keys(imagesToUpload);
-        if(imageKeys.length > 0) {
-          status.textContent = `⏳ Subiendo ${imageKeys.length} imágenes...`;
-          for(let key of imageKeys) {
+        if (imageKeys.length > 0) {
+          status.textContent = "⏳ Subiendo " + imageKeys.length + " imagen(es)...";
+          for (let key of imageKeys) {
             const img = imagesToUpload[key];
-            const path = `assets/images/${img.name}`;
-            await uploadToGitHub(owner, repo, token, path, img.base64, "Carga de imagen de producto desde Admin Panel");
+            await uploadToGitHub(owner, repo, token, 'assets/images/' + img.name, img.base64, "Imagen de producto desde Admin Panel");
           }
         }
 
-        // 2. Obtener el SHA de data/products.js
+        // 2. Obtener SHA de products.js
         status.textContent = "⏳ Actualizando base de datos...";
-        const dbPath = `data/products.js`;
-        const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${dbPath}`;
+        const dbPath = 'data/products.js';
+        const apiUrl = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + dbPath;
         const getRes = await fetch(apiUrl, {
-          headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+          headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (!getRes.ok) {
+          const errData = await getRes.json().catch(() => ({}));
+          throw new Error('GitHub ' + getRes.status + ' al leer products.js: ' + (errData.message || getRes.statusText));
+        }
+        const fileData = await getRes.json();
+
+        // 3. Preparar products.js con campo images[]
+        const exportedProducts = localProducts.map(function(p) {
+          const copy = Object.assign({}, p);
+          delete copy.image; // eliminar campo legacy
+          return copy;
         });
 
-        if(!getRes.ok) throw new Error("No se pudo encontrar products.js en GitHub.");
-        const fileData = await getRes.json();
-        const sha = fileData.sha;
+        const newDbContent = 'const WHATSAPP_NUMBER = "' + WHATSAPP_NUMBER + '";\n\n'
+          + 'const PRODUCTS = ' + JSON.stringify(exportedProducts, null, 2) + ';\n\n'
+          + 'const COMING_SOON = ' + JSON.stringify(COMING_SOON, null, 2) + ';\n\n'
+          + 'const TECH_SERVICES = ' + JSON.stringify(TECH_SERVICES, null, 2) + ';\n\n'
+          + 'const SOCIAL_LINKS = ' + JSON.stringify(SOCIAL_LINKS, null, 2) + ';\n\n'
+          + 'const LOCATION = ' + JSON.stringify(LOCATION, null, 2) + ';';
 
-        // 3. Preparar nuevo contenido de products.js
-        const newDbContent = "const WHATSAPP_NUMBER = \"" + WHATSAPP_NUMBER + "\";\n\nconst PRODUCTS = " + JSON.stringify(localProducts, null, 2) + ";\n\nconst COMING_SOON = " + JSON.stringify(COMING_SOON, null, 2) + ";\n\nconst TECH_SERVICES = " + JSON.stringify(TECH_SERVICES, null, 2) + ";\n\nconst SOCIAL_LINKS = " + JSON.stringify(SOCIAL_LINKS, null, 2) + ";\n\nconst LOCATION = " + JSON.stringify(LOCATION, null, 2) + ";";
-        
-        // 4. Subir nuevo products.js
-        await fetch(apiUrl, {
+        // 4. Subir products.js
+        const putRes = await fetch(apiUrl, {
           method: 'PUT',
-          headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+          headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            message: "Actualización de catálogo e imágenes desde Admin Panel",
+            message: "Actualización de catálogo desde Admin Panel",
             content: btoa(unescape(encodeURIComponent(newDbContent))),
-            sha: sha
+            sha: fileData.sha
           })
         });
+        if (!putRes.ok) {
+          const errData = await putRes.json().catch(() => ({}));
+          throw new Error('GitHub ' + putRes.status + ' al guardar products.js: ' + (errData.message || putRes.statusText));
+        }
 
-        status.textContent = "✅ ¡TODO PUBLICADO CON ÉXITO!";
+        status.textContent = "✅ ¡PUBLICADO CON ÉXITO!";
         status.style.color = "#25D366";
-        imagesToUpload = {}; // Limpiar cola de imágenes
-        setTimeout(() => { status.textContent = ""; btn.disabled = false; }, 5000);
+        imagesToUpload = {};
+        setTimeout(function() { status.textContent = ""; btn.disabled = false; }, 5000);
 
       } catch (err) {
         alert("❌ ERROR: " + err.message);
@@ -247,88 +294,71 @@
       }
     }
 
+    // ─── EDITOR ──────────────────────────────────────────────────
     function initEditor() {
       const container = document.getElementById('products-editor');
-      container.innerHTML = localProducts.map((p, idx) => `
-        <div class="admin-card">
-          <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:20px;">
-            <h3 style="font-family:var(--font-pixel); font-size:0.7rem; color:var(--yellow);">PRODUCTO #${idx+1}</h3>
-            <button class="btn btn-del" onclick="deleteProduct(${idx})">Eliminar Producto</button>
-          </div>
-          
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;">
-            <div>
-              <label style="font-weight:700; color:var(--orange); display:block; margin-bottom:10px;">📸 FOTOS DEL PRODUCTO</label>
-              <div id="imgs-${idx}" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
-                ${p.images.map((src, imgIdx) => `
-                  <div style="position:relative; width:120px;">
-                    <img id="preview-${idx}-${imgIdx}" src="${src}" style="width:120px;height:100px;object-fit:cover;border-radius:8px;border:2px solid var(--border);">
-                    <button onclick="document.getElementById('file-${idx}-${imgIdx}').click()" title="Cambiar foto" style="position:absolute;bottom:4px;left:4px;background:rgba(0,0,0,.7);border:none;color:#fff;border-radius:5px;padding:2px 6px;font-size:0.65rem;cursor:pointer;">✏️</button>
-                    ${p.images.length > 1 ? `<button onclick="removeImageFromProduct(${idx}, ${imgIdx})" title="Eliminar foto" style="position:absolute;top:4px;right:4px;background:var(--red);border:none;color:#fff;border-radius:50%;width:20px;height:20px;font-size:0.7rem;cursor:pointer;line-height:20px;">✕</button>` : ''}
-                    <input type="file" id="file-${idx}-${imgIdx}" style="display:none;" accept="image/*" onchange="handleImageSelect(${idx}, ${imgIdx}, this.files[0])">
-                  </div>
-                `).join('')}
-              </div>
-              <button class="btn btn-outline" style="font-size:0.7rem; padding:8px 14px;" onclick="addImageToProduct(${idx})">+ Agregar foto</button>
-            </div>
-            
-            <div>
-              <div class="input-row">
-                <div class="form-group">
-                  <label>Nombre del Producto</label>
-                  <input type="text" value="${p.name}" onchange="updateVal(${idx}, 'name', this.value)">
-                </div>
-                <div class="form-group">
-                  <label>Precio Base ($)</label>
-                  <input type="number" value="${p.basePrice}" onchange="updateVal(${idx}, 'basePrice', parseInt(this.value))">
-                </div>
-              </div>
+      container.innerHTML = localProducts.map(function(p, idx) {
+        return '<div class="admin-card">'
+          + '<div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:20px;">'
+          + '<h3 style="font-family:var(--font-pixel); font-size:0.7rem; color:var(--yellow);">PRODUCTO #' + (idx+1) + '</h3>'
+          + '<button class="btn btn-del" onclick="deleteProduct(' + idx + ')">Eliminar Producto</button>'
+          + '</div>'
 
-              <div class="form-group">
-                <label>Descripción</label>
-                <textarea onchange="updateVal(${idx}, 'description', this.value)">${p.description}</textarea>
-              </div>
-            </div>
-          </div>
+          // ── Sección fotos
+          + '<div style="margin-bottom:20px;">'
+          + '<label style="font-weight:700; color:var(--orange); display:block; margin-bottom:10px;">📸 FOTOS DEL PRODUCTO</label>'
+          + '<div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;">'
+          + renderImageThumbs(idx, p.images)
+          + '</div>'
+          + '<button class="btn btn-outline" style="font-size:0.7rem; padding:8px 14px;" onclick="addImageToProduct(' + idx + ')">+ Agregar foto</button>'
+          + '</div>'
 
-          <div style="margin-top:20px;">
-            <label style="font-weight:700; color:var(--orange);">ADICIONALES / EXTRAS</label>
-            <div id="addons-${idx}" style="margin-top:10px;">
-              ${p.addons.map((a, aidx) => `
-                <div class="addon-edit-row">
-                  <input type="text" value="${a.name}" onchange="updateAddon(${idx}, ${aidx}, 'name', this.value)">
-                  <input type="number" value="${a.price}" onchange="updateAddon(${idx}, ${aidx}, 'price', parseInt(this.value))">
-                  <button class="btn btn-del" onclick="deleteAddon(${idx}, ${aidx})">✕</button>
-                </div>
-              `).join('')}
-            </div>
-            <button class="btn btn-outline" style="font-size:0.7rem; padding:8px 15px;" onclick="addAddon(${idx})">+ Agregar Extra</button>
-          </div>
-        </div>
-      `).join('');
+          // ── Campos de texto
+          + '<div class="input-row">'
+          + '<div class="form-group"><label>Nombre del Producto</label>'
+          + '<input type="text" value="' + p.name.replace(/"/g,'&quot;') + '" onchange="updateVal(' + idx + ',\'name\',this.value)"></div>'
+          + '<div class="form-group"><label>Precio Base ($)</label>'
+          + '<input type="number" value="' + p.basePrice + '" onchange="updateVal(' + idx + ',\'basePrice\',parseInt(this.value))"></div>'
+          + '</div>'
+          + '<div class="form-group"><label>Descripción</label>'
+          + '<textarea onchange="updateVal(' + idx + ',\'description\',this.value)">' + p.description + '</textarea></div>'
+
+          // ── Adicionales
+          + '<div style="margin-top:20px;">'
+          + '<label style="font-weight:700; color:var(--orange);">ADICIONALES / EXTRAS</label>'
+          + '<div id="addons-' + idx + '" style="margin-top:10px;">'
+          + p.addons.map(function(a, aidx) {
+              return '<div class="addon-edit-row">'
+                + '<input type="text" value="' + a.name.replace(/"/g,'&quot;') + '" onchange="updateAddon(' + idx + ',' + aidx + ',\'name\',this.value)">'
+                + '<input type="number" value="' + a.price + '" onchange="updateAddon(' + idx + ',' + aidx + ',\'price\',parseInt(this.value))">'
+                + '<button class="btn btn-del" onclick="deleteAddon(' + idx + ',' + aidx + ')">✕</button>'
+                + '</div>';
+            }).join('')
+          + '</div>'
+          + '<button class="btn btn-outline" style="font-size:0.7rem; padding:8px 15px;" onclick="addAddon(' + idx + ')">+ Agregar Extra</button>'
+          + '</div>'
+          + '</div>';
+      }).join('');
     }
 
+    // ─── HELPERS ─────────────────────────────────────────────────
     function updateVal(idx, key, val) { localProducts[idx][key] = val; }
-    
     function updateAddon(pidx, aidx, key, val) { localProducts[pidx].addons[aidx][key] = val; }
 
     function deleteProduct(idx) {
-      if(confirm("¿Eliminar este producto permanentemente?")) {
+      if (confirm("¿Eliminar este producto permanentemente?")) {
         localProducts.splice(idx, 1);
         initEditor();
       }
     }
-
     function deleteAddon(pidx, aidx) {
       localProducts[pidx].addons.splice(aidx, 1);
       initEditor();
     }
-
     function addAddon(pidx) {
       localProducts[pidx].addons.push({ id: 'new-' + Date.now(), name: 'Nuevo Extra', price: 0 });
       initEditor();
     }
-
     function addNewProduct() {
       localProducts.push({
         id: "new-" + Date.now(),
@@ -345,19 +375,26 @@
     }
 
     function exportData() {
-      const dataStr = "const WHATSAPP_NUMBER = \"" + WHATSAPP_NUMBER + "\";\n\nconst PRODUCTS = " + JSON.stringify(localProducts, null, 2) + ";\n\nconst COMING_SOON = " + JSON.stringify(COMING_SOON, null, 2) + ";\n\nconst TECH_SERVICES = " + JSON.stringify(TECH_SERVICES, null, 2) + ";\n\nconst SOCIAL_LINKS = " + JSON.stringify(SOCIAL_LINKS, null, 2) + ";\n\nconst LOCATION = " + JSON.stringify(LOCATION, null, 2) + ";";
-      
+      const exportedProducts = localProducts.map(function(p) {
+        const copy = Object.assign({}, p);
+        delete copy.image;
+        return copy;
+      });
+      const dataStr = 'const WHATSAPP_NUMBER = "' + WHATSAPP_NUMBER + '";\n\n'
+        + 'const PRODUCTS = ' + JSON.stringify(exportedProducts, null, 2) + ';\n\n'
+        + 'const COMING_SOON = ' + JSON.stringify(COMING_SOON, null, 2) + ';\n\n'
+        + 'const TECH_SERVICES = ' + JSON.stringify(TECH_SERVICES, null, 2) + ';\n\n'
+        + 'const SOCIAL_LINKS = ' + JSON.stringify(SOCIAL_LINKS, null, 2) + ';\n\n'
+        + 'const LOCATION = ' + JSON.stringify(LOCATION, null, 2) + ';';
+
       const blob = new Blob([dataStr], { type: 'text/javascript' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'products.js';
-      document.body.appendChild(a);
-      a.click();
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href = url; a.download = 'products.js';
+      document.body.appendChild(a); a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      
-      alert("✅ Archivo 'products.js' generado.\n\nPara aplicar los cambios:\n1. Ve a la carpeta del proyecto.\n2. Entra en /data/\n3. Reemplaza el archivo 'products.js' actual por el que acabas de descargar.");
+      alert("✅ Archivo 'products.js' descargado.");
     }
   </script>
 </body>
