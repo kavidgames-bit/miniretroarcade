@@ -4,29 +4,34 @@ const PRODUCTS = [
   {
     "id": "consola-arcade-1p",
     "name": "Joystick Arcade USB para PC",
-    "description": "Compatible con PC (USB Plug & Play). Palanca tipo Sanwa. Botones arcade de alta respuesta. Gráfica personalizada con plotter laminado. Ideal para emuladores y juegos de pelea. No incluye juegos.",
+    "description": "Compatible con PC/RaspBerry (USB Plug & Play). Palanca tipo Sanwa con placa zero delay. Botones arcade de alta respuesta. Gráfica personalizada con plotter laminado. Ideal para emuladores y juegos de pelea. No incluye juegos.",
     "images": [
       "assets/images/prod_1781703009230.jpeg",
       "assets/images/prod_1781703012046.jpeg"
     ],
-    "basePrice": 10000000,
+    "basePrice": 190000,
     "badge": "MÁS VENDIDO",
     "category": "consola",
     "addons": [
       {
-        "id": "joystick-sanwa",
-        "name": "Joystick Sanwa Premium",
-        "price": 35000
-      },
-      {
         "id": "marquesina-custom",
         "name": "Diseño Personalizado",
-        "price": 15000
+        "price": 0
       },
       {
         "id": "extra-juegos",
-        "name": "Pack de Juegos Premium",
-        "price": 5000
+        "name": "Consola con juegos 32gb",
+        "price": 130000
+      },
+      {
+        "id": "new-1781739155596",
+        "name": "Palanca Americana Semi Profesional",
+        "price": 35000
+      },
+      {
+        "id": "new-1781739173918",
+        "name": "Botones Americanos con switch (x8)",
+        "price": 30000
       }
     ]
   },
@@ -61,7 +66,7 @@ const PRODUCTS = [
   {
     "id": "arcade-clasico",
     "name": "Mando Arcade 2 Players – 60 cm",
-    "description": "- Más de 11.000 juegos incluidos.\n- Memoria de 32GB.\n- Palancas tipo Sanwa o semiprofesionales.\n- Gráfica en plotter laminado.\n- Tapacanto en todos sus laterales.\n- Patitas antideslizantes.\n- Compatible con TV y monitor mediante HDMI.\n- Listo para conectar y jugar.",
+    "description": "Más de 11.000 juegos incluidos. Memoria de 32GB.\nPalancas tipo Sanwa o semiprofesionales. Gráfica en plotter laminado.\n- Tapacanto en todos sus laterales.\n- Patitas antideslizantes.\n- Compatible con TV y monitor mediante HDMI.\n- Listo para conectar y jugar.",
     "images": [
       "assets/images/arcade_classic.png"
     ],
