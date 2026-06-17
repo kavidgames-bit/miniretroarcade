@@ -7,8 +7,8 @@ const PRODUCTS = [
     "description": "Consola arcade premium para un jugador. Conexión HDMI directa a tu TV. Componentes de alta resistencia y miles de juegos clásicos.",
     "images": [
       "assets/images/prod_1781701724639.jpeg",
-      "assets/images/prod_1781702475379.jpeg",
-      "assets/images/prod_1781702479544.jpeg"
+      "assets/images/prod_1781702493406.jpeg",
+      "assets/images/prod_1781702496530.jpeg"
     ],
     "basePrice": 125000,
     "badge": "MÁS VENDIDO",
