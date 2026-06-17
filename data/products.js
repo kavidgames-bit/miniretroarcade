@@ -3,7 +3,7 @@ const WHATSAPP_NUMBER = "5491167887264";
 const PRODUCTS = [
   {
     "id": "consola-arcade-1p",
-    "name": "Consola Arcade 1 Jugador",
+    "name": "Consola Arcade 1 Jugador pro",
     "description": "Consola arcade premium para un jugador. Conexión HDMI directa a tu TV. Componentes de alta resistencia y miles de juegos clásicos.",
     "images": [
       "assets/images/prod_1781703009230.jpeg",
