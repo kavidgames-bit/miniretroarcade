@@ -3,13 +3,13 @@ const WHATSAPP_NUMBER = "5491167887264";
 const PRODUCTS = [
   {
     "id": "consola-arcade-1p",
-    "name": "Consola Arcade 1 Jugador pro",
+    "name": "Joystick Arcade USB para PC",
     "description": "Consola arcade premium para un jugador. Conexión HDMI directa a tu TV. Componentes de alta resistencia y miles de juegos clásicos.",
     "images": [
       "assets/images/prod_1781703009230.jpeg",
       "assets/images/prod_1781703012046.jpeg"
     ],
-    "basePrice": 125000,
+    "basePrice": 10000000,
     "badge": "MÁS VENDIDO",
     "category": "consola",
     "addons": [
