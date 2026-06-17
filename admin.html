@@ -164,14 +164,15 @@
 
     function renderImageThumbs(idx, images) {
       return images.map(function(src, imgIdx) {
+        var fileId = 'file-' + idx + '-' + imgIdx;
         var delBtn = images.length > 1
           ? '<button class="thumb-btn-del" onclick="removeImageFromProduct(' + idx + ',' + imgIdx + ')" title="Eliminar foto">✕</button>'
           : '';
         return '<div class="thumb-wrap">'
           + '<img id="preview-' + idx + '-' + imgIdx + '" src="' + src + '">'
-          + '<button class="thumb-btn-edit" onclick="triggerFileInput(' + idx + ',' + imgIdx + ')">✏️ cambiar</button>'
+          + '<input type="file" id="' + fileId + '" style="display:none;" accept="image/*" onchange="handleImageSelect(' + idx + ',' + imgIdx + ',this.files[0])">'
+          + '<label for="' + fileId + '" class="thumb-btn-edit" style="cursor:pointer;">✏️ cambiar</label>'
           + delBtn
-          + '<input type="file" id="file-' + idx + '-' + imgIdx + '" style="display:none;" accept="image/*" onchange="handleImageSelect(' + idx + ',' + imgIdx + ',this.files[0])">'
           + '</div>';
       }).join('');
     }
