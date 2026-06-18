@@ -131,6 +131,78 @@ const PRODUCTS = [
     "badge": "",
     "category": "otros",
     "addons": []
+  },
+  {
+    "id": "new-1781740987469",
+    "name": "Mando Arcade 3 Players",
+    "description": "Más de 11.000 juegos incluidos.\nMemoria de 32GB.\nDiseñado para hasta 3 jugadores.\nPalancas semiprofesionales.\nGráfica en plotter laminado.\nTapacanto en todos sus laterales.\nPatitas antideslizantes.\nCompatible con TV y monitor mediante HDMI.\nListo para conectar y jugar.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 600000,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741027771",
+    "name": "Mando Arcade 4 Players",
+    "description": "Más de 11.000 juegos incluidos.\nMemoria de 32GB.\nDiseñado para hasta 4 jugadores.\nPalancas tipo Sanwa o semiprofesionales.\nGráfica en plotter laminado.\nTapacanto en todos sus laterales.\nPatitas antideslizantes.\nCompatible con TV y monitor mediante HDMI.\nListo para conectar y jugar.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 700000,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741058205",
+    "name": "Mini Retro Arcade 32GB",
+    "description": "Más de 11.000 juegos incluidos.\nDisponible en 32GB.\nIncluye cable HDMI.\nIncluye 2 joysticks.\nCompatible con TV y monitor.\nFácil instalación.\nListo para conectar y jugar.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741170215",
+    "name": "Mini Retro Pi 4 – 128GB",
+    "description": "Todas las consolas de tu infancia en un solo equipo.\n\nRaspberry Pi 4.\nMicro SD de 128GB Clase 10.\nMás de 12.000 juegos.\nConsolas clásicas: Nintendo, Sega, Arcade, PlayStation, Atari y más.\nIncluye cable HDMI.\nIncluye fuente de alimentación.\n2 joysticks USB analógicos.\nListo para conectar y jugar.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741224335",
+    "name": "Mini Retro Gamer Edition",
+    "description": "Más de 12.000 juegos incluidos.\nConsolas clásicas y arcade en un solo equipo.\nIncluye cable HDMI.\nIncluye 2 joysticks USB.\nCompatible con TV y monitor.\nFácil instalación.\nListo para conectar y jugar.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741306367",
+    "name": "Arcade Clásico Slim 1,80 x 80",
+    "description": "Medidas: 1,80 m de alto x 80 cm de ancho.\nMonitor de 24\".\nMás de 11.000 juegos incluidos.\nMemoria de 32GB.\nPalancas semiprofesionales.\nSistema de sonido integrado.\nGráfica en plotter laminado.\nTapacanto en todos sus laterales.\nDiseño Slim de excelente terminación.\nPara 2 jugadores.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
   }
 ];
 
