@@ -69,63 +69,65 @@ const PRODUCTS = [
   {
     "id": "arcade-clasico",
     "name": "Mando Arcade 2 Players – 60 cm",
-    "description": "Más de 11.000 juegos incluidos. Memoria de 32GB.\nPalancas tipo Sanwa o semiprofesionales. Gráfica en plotter laminado.\n- Tapacanto en todos sus laterales.\n- Patitas antideslizantes.\n- Compatible con TV y monitor mediante HDMI.\n- Listo para conectar y jugar.",
+    "description": "Más de 11.000 juegos incluidos. Memoria de 32GB.\nPalancas tipo Sanwa. Gráfica en plotter laminado. Tapacanto en todos sus laterales.\nPatitas antideslizantes. Compatible con TV y monitor mediante HDMI. Listo para conectar y jugar.",
     "images": [
       "assets/images/arcade_classic.png"
     ],
-    "basePrice": 480000,
+    "basePrice": 350000,
     "badge": "PREMIUM",
     "category": "maquina",
-    "addons": [
-      {
-        "id": "monedero",
-        "name": "Fichero con Monedero Real",
-        "price": 45000
-      },
-      {
-        "id": "marquesina-led",
-        "name": "Marquesina LED Retroiluminada",
-        "price": 25000
-      },
-      {
-        "id": "ruedas",
-        "name": "Ruedas de transporte Pro",
-        "price": 15000
-      }
-    ]
+    "addons": []
   },
   {
     "id": "new-1781738022710",
-    "name": "Nuevo Producto",
-    "description": "Descripción del producto...",
+    "name": "Mando Arcade 2 Players – 75 cm",
+    "description": "Mando de 75 cm de ancho.\nMás de 11.000 juegos incluidos.\nMemoria de 32GB.\nAmplio espacio de juego para dos jugadores.\nPalancas semiprofesionales.\nGráfica en plotter laminado.\nTapacanto en todos sus laterales.\nPatitas antideslizantes.\nCompatible con TV y monitor mediante HDMI.\nListo para conectar y jugar.",
     "images": [
       "assets/images/arcade_classic.png"
     ],
-    "basePrice": 0,
+    "basePrice": 450000,
     "badge": "",
     "category": "otros",
     "addons": []
   },
   {
     "id": "new-1781738026233",
-    "name": "Nuevo Producto",
-    "description": "Descripción del producto...",
+    "name": "Mando Arcade 2 Players – 90 cm",
+    "description": "90 cm de ancho.\nMás de 11.000 juegos.\nMemoria de 32GB.\nPalancas semiprofesionales.\nGráfica en plotter laminado.\nTapacanto en todos sus laterales.\nPatitas antideslizantes.\nHDMI.\nListo para jugar.",
     "images": [
       "assets/images/arcade_classic.png"
     ],
-    "basePrice": 0,
+    "basePrice": 550000,
+    "badge": "",
+    "category": "otros",
+    "addons": [
+      {
+        "id": "new-1781740719951",
+        "name": "Memoria de 64gb (+ 19.000 juegos)",
+        "price": 40000
+      }
+    ]
+  },
+  {
+    "id": "new-1781738027367",
+    "name": "Kit Arcade para Armar – 60 cm",
+    "description": "Mando de 2 jugadores de 60 cm.\n2 palancas semiprofesionales.\n16 botones con microswitch.\n2 placas Zero Delay.\n2 cables USB.\nCable terminal de 26 pines.\nCable HDMI de 3 metros.\n4 patas de PVC.\nGráfica en plotter laminado.\nTapacanto PVC.\nRaspberry Pi 3.\nMicro SD de 32GB.\nDisipadores para Raspberry Pi 3.\nFuente para Raspberry Pi 3.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 250000,
     "badge": "",
     "category": "otros",
     "addons": []
   },
   {
-    "id": "new-1781738027367",
-    "name": "Nuevo Producto",
-    "description": "Descripción del producto...",
+    "id": "new-1781740916365",
+    "name": "Kit Arcade para Armar – 75 cm",
+    "description": "Mando de 2 jugadores de 75 cm.\n2 palancas semiprofesionales.\n16 botones con microswitch.\n2 placas Zero Delay.\n2 cables USB.\nCable terminal de 26 pines.\nCable HDMI de 3 metros.\n4 patas de PVC.\nGráfica en plotter laminado.\nTapacanto PVC.\nRaspberry Pi 3.\nMicro SD de 32GB.\nDisipadores para Raspberry Pi 3.\nFuente para Raspberry Pi 3.",
     "images": [
       "assets/images/arcade_classic.png"
     ],
-    "basePrice": 0,
+    "basePrice": 350000,
     "badge": "",
     "category": "otros",
     "addons": []
