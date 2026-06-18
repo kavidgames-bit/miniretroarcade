@@ -252,7 +252,97 @@ const PRODUCTS = [
   {
     "id": "new-1781741612970",
     "name": "Arcade Clásico 1,80 x 60 cm",
-    "description": "Medidas: 1,80 m de alto x 60 cm de ancho.\nRaspberry Pi 3B+ o PC con Batocera.\nPantalla LCD de 19\" o 24\".\nPalancas semiprofesionales.\n8 a 10 botones por jugador.\nPlacas Zero Delay por jugador.\nBotonera laminada.\nLaterales y frente laminados.\nTapacantos PVC.",
+    "description": "Medidas: 1,80 m de alto x 60 cm de ancho.\nRaspberry Pi 3B+.\nPantalla LCD de 19\".\nPalancas semiprofesionales.\n8 a 10 botones por jugador.\nPlacas Zero Delay por jugador.\nBotonera laminada.\nLaterales y frente laminados.\nTapacantos PVC.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741917008",
+    "name": "Arcade Clasico medium 1,80 cm x 60 cm",
+    "description": "Medidas: 1,80 m de alto x 60 cm de ancho.\nRaspberry Pi 3B+.\nPantalla LCD de 24\".\n8 botones por jugador + Start y Select.\nPalancas semiprofesionales de 8 movimientos.\n",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741917866",
+    "name": "Arcade Mini Clásico 1,50 m",
+    "description": "Medidas: 1,50 m de alto x 45 o 55 cm de ancho.\nRaspberry Pi 3B+.\nPantalla LCD de 17\".\n6 u 8 botones por jugador.\nBotonera laminada.\nMarquesina con iluminación LED.\nDiseño compacto ideal para espacios reducidos.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741918752",
+    "name": "Arcade Kids – Salones de Fiesta",
+    "description": "Medidas: 1,50 m de alto x 60 cm de frente.\nPandora Box con 6200 juegos clásicos.\nDiseñado para salones de fiestas y eventos.\nSistema seguro, sin riesgo de desconfiguración.\nMueble resistente para uso intensivo.\nIdeal para niños y espacios recreativos.\nListo para disfrutar durante toda la fiesta.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 1250000,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781742118238",
+    "name": "Pedestal Slim",
+    "description": "Fabricado en MDF de 18 mm.\nGráfica 100% laminada antidesgaste.\nAltura: 92 cm.\nBase de apoyo: 77 cm de largo x 26 cm de profundidad.\nDiseño compacto y resistente.\nIdeal para mandos arcade y consolas retro.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781742184318",
+    "name": "Pedestal Slim con Puerta y Repisa",
+    "description": "Fabricado en MDF de 18 mm.\nGráfica 100% laminada antidesgaste.\nPuerta con manija y traba.\n3 estantes internos.\nInterior pintado con esmalte sintético.\nAltura: 90 cm.\nBase de apoyo: 77 cm de largo x 26 cm de profundidad.\nDiseño práctico para almacenamiento y organización.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781742195350",
+    "name": "Retro USB 32GB + Joystick Analógico",
+    "description": "Pendrive de 32GB con sistema retro.\nUtilizable exclusivamente en PC.\nIncluye joystick analógico con cable.\nCompatible con múltiples consolas clásicas y arcade.\nFácil instalación.\nListo para jugar",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": [
+      {
+        "id": "new-1781742244044",
+        "name": "Memoria de 128 gb",
+        "price": 0
+      }
+    ]
+  },
+  {
+    "id": "new-1781742257604",
+    "name": "Nuevo Producto",
+    "description": "Descripción del producto...",
     "images": [
       "assets/images/arcade_classic.png"
     ],
