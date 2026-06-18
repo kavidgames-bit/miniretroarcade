@@ -194,7 +194,7 @@ const PRODUCTS = [
   },
   {
     "id": "new-1781741306367",
-    "name": "Arcade Clásico Slim 1,80 x 80",
+    "name": "Arcade Slim 1,80 x 80",
     "description": "Medidas: 1,80 m de alto x 80 cm de ancho.\nMonitor de 24\".\nMás de 11.000 juegos incluidos.\nMemoria de 32GB.\nPalancas semiprofesionales.\nSistema de sonido integrado.\nGráfica en plotter laminado.\nTapacanto en todos sus laterales.\nDiseño Slim de excelente terminación.\nPara 2 jugadores.",
     "images": [
       "assets/images/arcade_classic.png"
@@ -218,7 +218,7 @@ const PRODUCTS = [
   },
   {
     "id": "new-1781741555188",
-    "name": "Arcade Slim PRO 1,80 x 76 cm",
+    "name": "Arcade Slim PRO 1,80 x 80 cm",
     "description": "Medidas: 1,80 m de alto x 76 cm de frente.\nRaspberry Pi 3B+.\n11.587 juegos incluidos.\nPantalla LED/LCD de 32\".\n6 botones por jugador + Start y Select.\nPalancas semiprofesionales de 8 movimientos.\nMarquesina de vidrio ploteada.\nVidrio protector en pantalla.\nLaminado completo antidesgaste.\nInteriores pintados y tapacantos PVC.\nSistema de sonido integrado.",
     "images": [
       "assets/images/arcade_classic.png"
@@ -263,7 +263,7 @@ const PRODUCTS = [
   },
   {
     "id": "new-1781741917008",
-    "name": "Arcade Clasico medium 1,80 cm x 60 cm",
+    "name": "Arcade Medium 1,80 cm x 60 cm",
     "description": "Medidas: 1,80 m de alto x 60 cm de ancho.\nRaspberry Pi 3B+.\nPantalla LCD de 24\".\n8 botones por jugador + Start y Select.\nPalancas semiprofesionales de 8 movimientos.\n",
     "images": [
       "assets/images/arcade_classic.png"
@@ -275,7 +275,7 @@ const PRODUCTS = [
   },
   {
     "id": "new-1781741917866",
-    "name": "Arcade Mini Clásico 1,50 m",
+    "name": "Arcade Mini Clásico 1,50 m x 55 cm",
     "description": "Medidas: 1,50 m de alto x 45 o 55 cm de ancho.\nRaspberry Pi 3B+.\nPantalla LCD de 17\".\n6 u 8 botones por jugador.\nBotonera laminada.\nMarquesina con iluminación LED.\nDiseño compacto ideal para espacios reducidos.",
     "images": [
       "assets/images/arcade_classic.png"
