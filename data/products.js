@@ -322,27 +322,33 @@ const PRODUCTS = [
     "addons": []
   },
   {
-    "id": "new-1781742195350",
-    "name": "Retro USB 32GB + Joystick Analógico",
-    "description": "Pendrive de 32GB con sistema retro.\nUtilizable exclusivamente en PC.\nIncluye joystick analógico con cable.\nCompatible con múltiples consolas clásicas y arcade.\nFácil instalación.\nListo para jugar",
+    "id": "new-1781742257604",
+    "name": "Pedestal FAT",
+    "description": "Fabricado en MDF de 18 mm.\nGráfica 100% laminada antidesgaste.\nAltura: 80 cm.\nBase de apoyo: 74 cm de largo x 40 cm de profundidad.\nDiseño robusto y resistente.\nIdeal para mandos arcade y consolas retro.",
     "images": [
       "assets/images/arcade_classic.png"
     ],
     "basePrice": 0,
     "badge": "",
     "category": "otros",
-    "addons": [
-      {
-        "id": "new-1781742244044",
-        "name": "Memoria de 128 gb",
-        "price": 0
-      }
-    ]
+    "addons": []
   },
   {
-    "id": "new-1781742257604",
-    "name": "Nuevo Producto",
-    "description": "Descripción del producto...",
+    "id": "new-1781742345952",
+    "name": "Retro USB 32GB + Joystick Analógico",
+    "description": "Pendrive de 32GB con sistema retro.\nUtilizable exclusivamente en PC.\nIncluye joystick analógico con cable.\nCompatible con múltiples consolas clásicas y arcade.\nFácil instalación.\nListo para jugar.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781742367816",
+    "name": "Retro USB 128GB + Joystick Analógico",
+    "description": "Pendrive de 128GB con sistema retro.\nUtilizable exclusivamente en PC.\nIncluye joystick analógico con cable.\nCompatible con múltiples consolas clásicas y arcade.\nFácil instalación.\nListo para jugar.",
     "images": [
       "assets/images/arcade_classic.png"
     ],
