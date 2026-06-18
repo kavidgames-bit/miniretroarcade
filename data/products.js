@@ -203,6 +203,63 @@ const PRODUCTS = [
     "badge": "",
     "category": "otros",
     "addons": []
+  },
+  {
+    "id": "new-1781741486368",
+    "name": "Arcade Slim 1,80 x 60 cm",
+    "description": "Medidas: 1,80 m de alto x 60 cm de frente.\nRaspberry Pi 3B+.\n11.587 juegos incluidos.\nPantalla LED/LCD de 24\".\n6 botones por jugador + Start y Select.\nPalancas semiprofesionales de 8 movimientos.\nMarquesina de vidrio ploteada.\nVidrio protector en pantalla.\nLaminado completo antidesgaste.\nInteriores pintados y tapacantos PVC.\nSistema de sonido integrado.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1781741555188",
+    "name": "Arcade Slim PRO 1,80 x 76 cm",
+    "description": "Medidas: 1,80 m de alto x 76 cm de frente.\nRaspberry Pi 3B+.\n11.587 juegos incluidos.\nPantalla LED/LCD de 32\".\n6 botones por jugador + Start y Select.\nPalancas semiprofesionales de 8 movimientos.\nMarquesina de vidrio ploteada.\nVidrio protector en pantalla.\nLaminado completo antidesgaste.\nInteriores pintados y tapacantos PVC.\nSistema de sonido integrado.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": [
+      {
+        "id": "new-1781741565913",
+        "name": "Luz LED en marquesinaLuz LED en marquesina: realza la estética del arcade. Disponible con o sin botón de encendido independiente.",
+        "price": 0
+      },
+      {
+        "id": "new-1781741575524",
+        "name": "Patas regulables (x4): permiten nivelar el equipo en cualquier superficie.",
+        "price": 0
+      },
+      {
+        "id": "new-1781741586590",
+        "name": "Parlantes 2.1: sonido más potente, con mayor profundidad y calidad de audio.",
+        "price": 0
+      },
+      {
+        "id": "new-1781741594418",
+        "name": "Puertos USB traseros: conexión rápida para joysticks, teclados, pendrives y otros accesorios.",
+        "price": 0
+      }
+    ]
+  },
+  {
+    "id": "new-1781741612970",
+    "name": "Arcade Clásico 1,80 x 60 cm",
+    "description": "Medidas: 1,80 m de alto x 60 cm de ancho.\nRaspberry Pi 3B+ o PC con Batocera.\nPantalla LCD de 19\" o 24\".\nPalancas semiprofesionales.\n8 a 10 botones por jugador.\nPlacas Zero Delay por jugador.\nBotonera laminada.\nLaterales y frente laminados.\nTapacantos PVC.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
   }
 ];
 
