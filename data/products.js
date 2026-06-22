@@ -43,7 +43,9 @@ const PRODUCTS = [
     "name": "Mando Arcade 1 Player",
     "description": "Más de 11.000 juegos incluidos. Memoria de 32GB. Palancas disponibles tipo Sanwa. Botones arcade de alta respuesta. Gráfica personalizada con plotter laminado. Sistema listo para conectar y jugar.\nCompatible con TV y monitor mediante HDMI.",
     "images": [
-      "assets/images/retro_console.png"
+      "assets/images/prod_1782134910138.png",
+      "assets/images/prod_1782134862473.jpeg",
+      "assets/images/prod_1782134869478.jpeg"
     ],
     "basePrice": 185000,
     "badge": "POPULAR",
