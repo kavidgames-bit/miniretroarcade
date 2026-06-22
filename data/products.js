@@ -356,6 +356,48 @@ const PRODUCTS = [
     "badge": "",
     "category": "otros",
     "addons": []
+  },
+  {
+    "id": "new-1782133684764",
+    "name": "BARTOPS ARCADE",
+    "description": "Ancho disponible: 45 cm.\nBotonera laminada.\nSistema con PC interna o Raspberry Pi 3B+.\nPantalla LCD de 17\".\nConfiguración de 6 u 8 botones por jugador.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 1000000,
+    "badge": "",
+    "category": "otros",
+    "addons": [
+      {
+        "id": "new-1782133745748",
+        "name": "Pantalla LCD de 22´´",
+        "price": 0
+      }
+    ]
+  },
+  {
+    "id": "new-1782133844532",
+    "name": "HITBOX – CONTROL ARCADE PROFESIONAL",
+    "description": "Compatible con PC mediante conexión Plug & Play, listo para conectar y jugar.\n15 botones en total.\nPlaca interna Zero Delay.\nConexión USB Plug & Play para PC.\nPlotter laminado de alta durabilidad.\nConstrucción resistente y terminaciones de calidad\nIdeal para juego competitivo y nivel torneo",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1782133948909",
+    "name": "HITBOX PRO – CONTROL ARCADE AVANZADO",
+    "description": "19 botones en total.\nPlaca interna Zero Delay.\nConexión USB Plug & Play para PC.\nPlotter laminado premium de alta resistencia.\nConstrucción robusta y terminaciones de calidad.\nPensado para uso profesional y competitivo.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
   }
 ];
 
