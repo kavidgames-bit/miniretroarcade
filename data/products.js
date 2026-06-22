@@ -73,7 +73,10 @@ const PRODUCTS = [
     "name": "Mando Arcade 2 Players – 60 cm",
     "description": "Más de 11.000 juegos incluidos. Memoria de 32GB.\nPalancas tipo Sanwa. Gráfica en plotter laminado. Tapacanto en todos sus laterales.\nPatitas antideslizantes. Compatible con TV y monitor mediante HDMI. Listo para conectar y jugar.",
     "images": [
-      "assets/images/arcade_classic.png"
+      "assets/images/prod_1782137219433.jpeg",
+      "assets/images/prod_1782137209883.jpeg",
+      "assets/images/prod_1782137204331.jpeg",
+      "assets/images/prod_1782137196521.jpeg"
     ],
     "basePrice": 350000,
     "badge": "PREMIUM",
