@@ -403,6 +403,30 @@ const PRODUCTS = [
     "badge": "",
     "category": "otros",
     "addons": []
+  },
+  {
+    "id": "new-1782138293547",
+    "name": "Mando Arcade 75 cm con Pedestal – Edición Premium",
+    "description": "Mando arcade de 75 cm\nPedestal incluido para mayor comodidad\nDiseño premium con excelente terminación\nBotones arcade de alta respuesta\nConstrucción resistente y duradera",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
+  },
+  {
+    "id": "new-1782138468003",
+    "name": "Mando Arcade 4 players con Pedestal – Edición Premium",
+    "description": "Mueble completamente laminado de alta calidad.\nPalancas semiprofesionales de alta resistencia.\nBotones con micro switch para una respuesta rápida y precisa.\nGráficos impresos en plotter laminado premium antidesgaste.\nSistema interno con Raspberry Pi 3 B.\nVersiones disponibles de 32 GB.\nPlacas internas Zero Delay.",
+    "images": [
+      "assets/images/arcade_classic.png"
+    ],
+    "basePrice": 0,
+    "badge": "",
+    "category": "otros",
+    "addons": []
   }
 ];
 
